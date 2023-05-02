@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
-    def function_name(self):
-        pass
+    def some_method(*args):
+        return None
