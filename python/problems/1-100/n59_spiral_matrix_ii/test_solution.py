@@ -9,7 +9,6 @@ DATASET = [
 ]
 
 
-
 @pytest.mark.parametrize('data', DATASET)
 def test_solution(data):
     nums = Solution().generateMatrix(data[0])
