@@ -1,5 +1,13 @@
 from typing import List, Optional
-from leetcode_test_utils.list_node import ListNode
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+    def __str__(self) -> str:
+        return f"{self.val}{(' -> ' + str(self.next.val)) if self.next else ''}"
 
 
 class Solution:
@@ -18,4 +26,3 @@ class Solution:
             max_sum = max(max_sum, stack[i].val + stack.pop().val)
 
         return max_sum
-

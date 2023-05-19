@@ -1,11 +1,24 @@
 import pytest
 
-from .solution import Solution
-from leetcode_test_utils.list_node import ListNode, create_list_node
+from .solution import Solution, ListNode
+
+
+def create_list_node(values: list) -> ListNode:
+    if not values:
+        raise ValueError()
+
+    head = ListNode(values[0])
+    node = head
+    for i in range(1, len(values)):
+        node.next = ListNode(values[i])
+        node = node.next
+
+    return head
+
 
 DATASET = [
-    (create_list_node([5,4,2,1]), 6),
-    (create_list_node([4,2,2,3]), 7),
+    (create_list_node([5, 4, 2, 1]), 6),
+    (create_list_node([4, 2, 2, 3]), 7),
     (create_list_node([1, 100000]), 100001),
     (create_list_node([1, 2, 3]), 4),
     (create_list_node([1]), 0),

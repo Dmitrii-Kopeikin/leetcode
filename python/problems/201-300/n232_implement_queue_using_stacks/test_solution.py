@@ -1,12 +1,12 @@
 import pytest
 
 from .solution import MyQueue
-from .solution_other import MyQueue as OtherQueue
+from .solution_other import MyQueue as OtherMyQueue
 
 
 DATASET = [
     MyQueue,
-    OtherQueue,
+    OtherMyQueue,
 ]
 
 
