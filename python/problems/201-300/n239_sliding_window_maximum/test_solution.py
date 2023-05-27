@@ -4,12 +4,13 @@ from .solution import Solution
 
 
 DATASET = [
-    ([[1, 2, 3], [0], [0], [0]], 4),
-    ([[1], [0, 2, 4], [1, 3, 4], [2], [1, 2]], 4),
+    (([1,3,-1,-3,5,3,6,7], 3), [3,3,5,5,6,7]),
+    (([1], 1), [1]),
+    (([1, -1], 1), [1, -1]),
 ]
 
 
 @pytest.mark.parametrize("data", DATASET)
 def test_solution(data):
-    result = Solution().shortestPathLength(data[0])
+    result = Solution().maxSlidingWindow(*data[0])
     assert result == data[1], result
