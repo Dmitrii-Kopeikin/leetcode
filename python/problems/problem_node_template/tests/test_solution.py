@@ -1,7 +1,7 @@
 import pytest
 
-from .solution import Solution
-from .solution import ListNode
+from ..solution import Solution
+from ..solution import ListNode
 
 
 def create_list_node(values: list) -> ListNode:

@@ -1,6 +1,6 @@
 import pytest
 
-from .solution_c import Solution
+from ..solution import Solution
 
 DATASET = [
     ((5, [[4, 1, -1], [2, 0, -1], [0, 3, -1], [4, 3, -1]], 0, 1, 5),
@@ -24,4 +24,4 @@ DATASET = [
 @pytest.mark.parametrize('data', DATASET)
 def test_solution(data):
     result = Solution().modifiedGraphEdges(*data[0])
-    assert result == data[1], result
+    assert sorted(result) == sorted(data[1]), result
