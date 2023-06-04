@@ -1,20 +1,15 @@
 [tool.poetry]
-name = "lc-python"
+name = "leetcode-python"
 version = "0.1.0"
-description = "leetcode python virtual enviroment"
+description = "leetcode prombles, python"
 authors = ["Dmitrii-Kopeikin <kopeikindp@gmail.com>"]
-license = "MIT"
 readme = "README.md"
-packages = [{include = "lc_python"}]
+packages = [{include = "leetcode_python"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 pytest = "^7.3.1"
 
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^7.3.1"
-black = "^23.3.0"
 
 [build-system]
 requires = ["poetry-core"]
