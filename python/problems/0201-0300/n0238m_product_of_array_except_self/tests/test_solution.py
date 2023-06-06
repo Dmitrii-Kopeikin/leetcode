@@ -2,12 +2,13 @@ from copy import deepcopy
 
 import pytest
 
-from .solution_in_place import Solution as SolutionInPlace
-from .solution import Solution
+from ..solution_in_place import Solution as SolutionInPlace
+from ..solution import Solution
 
 
 DATASET = [
     ([1,2,3,4], [24, 12, 8, 6]),
+    ([1, 2, 3, 4, 5], [120, 60, 40, 30, 24]),
     ([1,2,3,0], [0, 0, 0, 6]),
     ([2, 3], [3, 2]),
     ([1], []),
