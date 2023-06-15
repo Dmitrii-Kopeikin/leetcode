@@ -1,3 +1,5 @@
+import copy
+
 import pytest
 
 from ..solution import Solution
@@ -6,7 +8,7 @@ from ..solution import ListNode
 
 def create_list_node(values: list) -> ListNode:
     if not values:
-        raise ValueError()
+        return None
 
     head = ListNode(values[0])
     node = head
@@ -15,6 +17,7 @@ def create_list_node(values: list) -> ListNode:
         node = node.next
 
     return head
+
 
 def is_nodes_equal(node: ListNode, other_node: ListNode):
     while node or other_node:
@@ -27,11 +30,20 @@ def is_nodes_equal(node: ListNode, other_node: ListNode):
 
 
 DATASET = [
-    (None, None),
+    (
+        [
+            create_list_node([1, 4, 5]),
+            create_list_node([1, 3, 4]),
+            create_list_node([2, 6]),
+        ],
+        create_list_node([1, 1, 2, 3, 4, 4, 5, 6]),
+    ),
+    ([], None),
+    ([None], None),
 ]
 
 
-@pytest.mark.parametrize("data", DATASET)
+@pytest.mark.parametrize("data", copy.deepcopy(DATASET))
 def test_solution(data):
-    result = Solution().some_method(data[0])
-    assert result == data[1], result
+    result = Solution().mergeKLists(data[0])
+    assert is_nodes_equal(result, data[1]), result
