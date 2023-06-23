@@ -1,5 +1,3 @@
-from collections import deque
-
 import pytest
 
 from ..solution import Solution
@@ -8,7 +6,7 @@ from ..solution import TreeNode
 
 def create_bst(values: list) -> TreeNode:
     if not values:
-        raise ValueError()
+        return None
 
     root = TreeNode(values[0])
 
@@ -31,24 +29,18 @@ def create_bst(values: list) -> TreeNode:
 
     return root
 
-
-def create_bt(values: list, idx: int = 0) -> TreeNode:
-    if idx >= len(values) or values[idx] is None:
-        return None
-    root = TreeNode(values[idx])
-    root.left = create_bt(values, idx * 2 + 1)
-    root.right = create_bt(values, idx * 2 + 2)
-    return root
-
+def is_nodes_equal(node_1: TreeNode, node_2: TreeNode):
+    if node_1 and node_2 and node_1.val == node_2.val or not node_1 and not node_2:
+        return True
+    return False
 
 DATASET = [
-    ((create_bt([3, 5, 1, 6, 2, 9, 8, None, None, 7, 4]), create_bt(
-        [3, 5, 1, 6, 7, 4, 2, None, None, None, None, None, None, 9, 8])), True),
-    ((create_bt([1, 2, 3]), create_bt([1, 3, 2])), False)
+    ((create_bst([4, 2, 7, 1, 3]), 2), create_bst([2, 1, 3])),
+    ((create_bst([4, 2, 7, 1, 3]), 5), create_bst([])),
 ]
 
 
 @pytest.mark.parametrize("data", DATASET)
 def test_solution(data):
-    result = Solution().leafSimilar(*data[0])
-    assert result == data[1], result
+    result = Solution().searchBST(*data[0])
+    assert is_nodes_equal(result, data[1]), result

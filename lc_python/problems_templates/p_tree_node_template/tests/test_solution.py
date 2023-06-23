@@ -30,6 +30,15 @@ def create_bst(values: list) -> TreeNode:
     return root
 
 
+def create_bt(values: list, idx: int = 0) -> TreeNode:
+    if idx >= len(values) or values[idx] is None:
+        return None
+    root = TreeNode(values[idx])
+    root.left = create_bt(values, idx * 2 + 1)
+    root.right = create_bt(values, idx * 2 + 2)
+    return root
+
+
 DATASET = [
     (None, None),
 ]
